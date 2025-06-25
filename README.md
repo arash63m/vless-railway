@@ -1,28 +1,17 @@
 # VLESS Server on Railway
 
-این ریپوزیتوری یک سرور VLESS را روی Railway مستقر می‌کند.
+## Deployment Steps:
+1. Fork this repository
+2. Go to Railway and create new project
+3. Select "Deploy from GitHub repo"
+4. Choose your forked repository
+5. Add environment variables (optional):
+   - `UUID`: Your custom UUID (auto-generated if empty)
+   - `PORT`: Server port (default: 8080)
+   - `DOMAIN`: Domain for TLS certificate (default: localhost)
+6. Deploy!
 
-## پیش‌نیازها
-- حساب [Railway](https://railway.app/)
-- حساب [GitHub](https://github.com/)
-
-## راه‌اندازی
-
-1. این ریپوزیتوری را Fork کنید
-2. در Railway یک پروژه جدید ایجاد کنید
-3. گزینه "Deploy from GitHub repo" را انتخاب کنید
-4. ریپوی فورک شده را انتخاب کنید
-5. متغیرهای محیطی را تنظیم کنید:
-   - `UUID`: یک UUID برای احراز هویت (اگر تنظیم نشود به صورت خودکار تولید می‌شود)
-   - `DOMAIN`: دامنه مورد استفاده برای گواهی TLS (اختیاری)
-6. دیپلوی را شروع کنید
-
-## دریافت کانفیگ
-
-پس از دیپلوی موفق، Railway یک دامنه به شما اختصاص می‌دهد. از این دامنه در کانفیگ کلاینت خود استفاده کنید.
-
-مثال کانفیگ کلاینت:
-
+## Client Configuration:
 ```json
 {
   "v": "2",
