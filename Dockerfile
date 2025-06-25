@@ -1,7 +1,11 @@
 FROM alpine:latest
 
-# Install dependencies including openssl
-RUN apk add --no-cache curl unzip openssl
+# Install all required dependencies
+RUN apk add --no-cache \
+    curl \
+    unzip \
+    openssl \
+    gettext
 
 # Download and install Xray
 RUN mkdir -p /usr/local/bin \
