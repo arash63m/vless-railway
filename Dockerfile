@@ -1,23 +1,12 @@
 FROM alpine:latest
 
-RUN apk add --no-cache --virtual .build-deps \
-    git \
-    make \
-    cmake \
-    libtool \
-    automake \
-    autoconf \
-    g++ \
-    linux-headers \
-    && git clone https://github.com/XTLS/Xray-core.git \
-    && cd Xray-core \
-    && make \
-    && mv ./main/xray /usr/local/bin/ \
-    && cd .. \
-    && rm -rf Xray-core \
-    && apk del .build-deps
-
-RUN apk add --no-cache ca-certificates
+RUN apk add --no-cache curl unzip \
+    && mkdir -p /usr/local/bin \
+    && curl -L https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip -o /tmp/xray.zip \
+    && unzip /tmp/xray.zip -d /tmp \
+    && mv /tmp/xray /usr/local/bin/ \
+    && rm -rf /tmp/xray.zip /tmp/*.json \
+    && chmod +x /usr/local/bin/xray
 
 COPY config.json /etc/xray/config.json
 COPY entrypoint.sh /entrypoint.sh
